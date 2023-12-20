@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'swapi' => [
+        'base_url' => env('SWAPI_BASE_URL', 'https://swapi.py4e.com/api'),
+    ],
+
 ];
