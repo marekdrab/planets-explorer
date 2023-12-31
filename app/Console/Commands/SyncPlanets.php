@@ -75,21 +75,24 @@ class SyncPlanets extends Command
 
     private function syncResidents($planetId, $residentsUrls)
     {
-
+        $newResidentsData = [];
         foreach ($residentsUrls as $url) {
             $response = $this->client->request('GET', $url);
             $residentData = json_decode($response->getBody(), true);
 
-            // Assuming 'url' is unique for each resident
-            Resident::updateOrCreate(
-                ['url' => $url],
-                [
+            if (!Resident::where('url', $url)->exists()) {
+                $newResidentsData[] = [
+                    'url' => $url,
                     'name' => $residentData['name'],
                     'height' => $residentData['height'],
                     'mass' => $residentData['mass'],
-                    'planet_id' => $planetId,
-                ]
-            );
+                    'planetId' => $planetId,
+                ];
+            }
+        }
+
+        if (!empty($newResidentsData)) {
+            Resident::insert($newResidentsData);
         }
     }
 }
