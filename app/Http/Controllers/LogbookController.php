@@ -10,10 +10,10 @@ class LogbookController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'mood' => 'nullable|string',
-            'weather' => 'nullable|string',
-            'gps_location' => 'nullable|string',
-            'note' => 'nullable|string',
+            'mood' => 'required|string',
+            'weather' => 'required|string',
+            'gps_location' => 'required|string',
+            'note' => 'required|string',
         ]);
 
         $logbook = Logbook::create($validatedData);
