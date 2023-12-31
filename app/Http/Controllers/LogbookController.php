@@ -18,6 +18,6 @@ class LogbookController extends Controller
 
         $logbook = Logbook::create($validatedData);
 
-        return response()->json($logbook, 201); // 201 Created
+        return response()->json($logbook, 201);
     }
 }

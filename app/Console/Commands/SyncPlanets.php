@@ -31,6 +31,7 @@ class SyncPlanets extends Command
         parent::__construct();
         $this->client = $client;
     }
+
     /**
      * Execute the console command.
      * @throws GuzzleException

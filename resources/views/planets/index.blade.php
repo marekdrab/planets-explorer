@@ -29,4 +29,4 @@
         </tbody>
     </table>
 
-    {{ $planets->links() }} <!-- Pagination links -->
+    {{ $planets->links() }}

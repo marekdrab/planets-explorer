@@ -21,15 +21,18 @@ class Planet extends Model
         'population',
     ];
 
-    public static function getTotalCount() {
+    public static function getTotalCount()
+    {
         return self::count();
     }
 
-    public function residents() {
+    public function residents()
+    {
         return $this->hasMany(Resident::class);
     }
 
-    public static function getLargestPlanets($limit = 10) {
+    public static function getLargestPlanets($limit = 10)
+    {
         return self::where('diameter', '>', 0)
             ->orderBy('diameter', 'desc')
             ->take($limit)
