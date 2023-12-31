@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/planets/largest', [PlanetDataController::class, 'largestPlanets']);
+Route::get('/planets/terrain-distribution', [PlanetDataController::class, 'terrainDistribution']);

@@ -21,8 +21,11 @@ class Planet extends Model
         'population',
     ];
 
-    public function residents()
-    {
+    public static function getTotalCount() {
+        return self::count();
+    }
+
+    public function residents() {
         return $this->hasMany(Resident::class);
     }
 
@@ -33,4 +36,29 @@ class Planet extends Model
             ->get(['name', 'diameter']);
     }
 
+    public static function getTerrainDistribution()
+    {
+        $terrains = [];
+        $total = self::getTotalCount();
+
+        self::all()->each(function ($planet) use (&$terrains) {
+            $types = explode(',', $planet->terrain);
+            foreach ($types as $type) {
+                $type = trim(strtolower($type));
+                if (!empty($type)) {
+                    if (!isset($terrains[$type])) {
+                        $terrains[$type] = 0;
+                    }
+                    $terrains[$type]++;
+                }
+            }
+        });
+
+        $percentages = [];
+        foreach ($terrains as $type => $count) {
+            $percentages[$type] = round(($count / $total) * 100, 2);
+        }
+
+        return $percentages;
+    }
 }
