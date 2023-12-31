@@ -28,7 +28,6 @@ class Planet extends Model
 
     public static function getLargestPlanets($limit = 10) {
         return self::where('diameter', '>', 0)
-            ->whereRaw("diameter != 'unknown'")
             ->orderBy('diameter', 'desc')
             ->take($limit)
             ->get(['name', 'diameter']);
