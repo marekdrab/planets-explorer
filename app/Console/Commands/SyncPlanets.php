@@ -56,12 +56,14 @@ class SyncPlanets extends Command
 
     private function syncPlanet($planetData)
     {
+        $diameter = $planetData['diameter'] !== 'unknown' ? $planetData['diameter'] : null;
+
         return Planet::updateOrCreate(
             ['name' => $planetData['name']],
             [
                 'rotation_period' => $planetData['rotation_period'],
                 'orbital_period' => $planetData['orbital_period'],
-                'diameter' => $planetData['diameter'],
+                'diameter' => $diameter,
                 'climate' => $planetData['climate'],
                 'gravity' => $planetData['gravity'],
                 'terrain' => $planetData['terrain'],

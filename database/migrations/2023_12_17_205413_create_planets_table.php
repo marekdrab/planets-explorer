@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('rotation_period')->nullable();
             $table->string('orbital_period')->nullable();
-            $table->string('diameter')->nullable();
+            $table->integer('diameter')->nullable();
             $table->string('climate')->nullable();
             $table->string('gravity')->nullable();
             $table->string('terrain')->nullable();
