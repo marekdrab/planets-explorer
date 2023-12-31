@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\PlanetDataController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +14,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-//
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
 
 Route::get('/planets/largest', [PlanetDataController::class, 'largestPlanets']);
 Route::get('/planets/terrain-distribution', [PlanetDataController::class, 'terrainDistribution']);
+
+Route::post('/logbooks', [LogbookController::class, 'store']);
