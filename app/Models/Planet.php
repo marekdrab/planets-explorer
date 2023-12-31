@@ -26,4 +26,12 @@ class Planet extends Model
         return $this->hasMany(Resident::class);
     }
 
+    public static function getLargestPlanets($limit = 10) {
+        return self::where('diameter', '>', 0)
+            ->whereRaw("diameter != 'unknown'")
+            ->orderBy('diameter', 'desc')
+            ->take($limit)
+            ->get(['name', 'diameter']);
+    }
+
 }
