@@ -33,7 +33,7 @@ class LogbookTest extends TestCase
             'note',
             'id', // assuming your response includes the id
             'created_at',
-            'updated_at'
+            'updated_at',
         ]);
     }
 
@@ -64,7 +64,6 @@ class LogbookTest extends TestCase
         $response->assertJsonValidationErrors(['mood', 'weather', 'gps_location', 'note']);
     }
 
-
     public function testDatabaseStateAfterLogbookCreation()
     {
         $formData = [
@@ -88,5 +87,4 @@ class LogbookTest extends TestCase
         $logbook = Logbook::latest()->first();
         $this->assertEquals('Found a safe place to rest.', decrypt($logbook->note));
     }
-
 }
