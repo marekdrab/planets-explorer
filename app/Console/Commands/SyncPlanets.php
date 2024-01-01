@@ -34,6 +34,7 @@ class SyncPlanets extends Command
 
     /**
      * Execute the console command.
+     *
      * @throws GuzzleException
      */
     public function handle()
