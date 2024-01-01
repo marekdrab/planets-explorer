@@ -14,6 +14,6 @@ class Resident extends Model
         'name',
         'height',
         'mass',
-        'planetId'
+        'planetId',
     ];
 }
