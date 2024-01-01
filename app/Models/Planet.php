@@ -21,14 +21,14 @@ class Planet extends Model
         'population',
     ];
 
-    public static function getTotalCount()
-    {
-        return self::count();
-    }
-
     public function residents()
     {
         return $this->hasMany(Resident::class);
+    }
+
+    public static function getTotalCount()
+    {
+        return self::count();
     }
 
     public static function getLargestPlanets($limit = 10)
@@ -39,6 +39,11 @@ class Planet extends Model
             ->get(['name', 'diameter']);
     }
 
+    /**
+     * Parse terrain string from DB and calculate percentages according to types.
+     *
+     * @return array
+     */
     public static function getTerrainDistribution()
     {
         $terrains = [];
