@@ -16,4 +16,3 @@ class PlanetDataController extends Controller
         return response()->json(Planet::getTerrainDistribution());
     }
 }
-
