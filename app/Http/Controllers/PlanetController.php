@@ -11,7 +11,6 @@ class PlanetController extends Controller
     {
         $query = Planet::query();
 
-
         if ($request->filled('diameter')) {
             $query->where('diameter', $request->diameter);
         }
